@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Product Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <style>
+      /* CSS styles for the form */
+      /* CSS styles for the form */
+form {
+  max-width: 500px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  font-size: 1em;
+  color: #444;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container>* {
+  flex: 0 0 48%;
+  margin-bottom: 16px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 16px;
+}
+
+.error {
+  color: red;
+  margin-top: 6px;
+}
+
+/* Responsive styles */
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+  form {
+    max-width: 90%;
+  }
+
+  .container>* {
+    flex: 0 0 100%;
+  }
+}
+
+/* Tablets and smaller desktops */
+@media screen and (max-width: 768px) {
+  form {
+    max-width: 90%;
+  }
+
+  .container>* {
+    flex: 0 0 100%;
+  }
+}
+
+    
+
+
+
+
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.project {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.project img {
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.project h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.project p {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.project span {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: auto;
+}
+
+/* Responsive styles */
+
+/* Tablets and smaller desktops */
+@media screen and (max-width: 768px) {
+  .project {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .project img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .project h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .project p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .project span {
+    font-size: 16px;
+    margin-left: 0;
+  }
+}
+
+      
+    </style>
+  </head>
+  <body>
+    {% include 'logoutnav.html'%}
+    <p>{{error_message}}
+      <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="container">
+        <div>
+          <label for="product-name">Username:</label>
+          <input type="text" id="shop_name" name="shop_name" value="{{ username.shop_name }}" readonly>
+          
+          
+        </div>
+        <div>
+          <label for="product-name">Shop Name:</label>
+          <input type="text" id="username" name="username" value="{{ username.username }}" readonly>
+          
+        </div>
+        <div>
+          <label for="product-name">Shop address:</label>
+          
+          <input type="text" id="city" name="local_address" value="{{ username.local_address }}" readonly>
+          
+          
+        </div>
+        <div>
+          <label for="product-name">City:</label>
+          
+          <input type="text" id="city" name="city" value="{{ username.city }}" readonly>
+          
+          
+        </div>
+        {% for s in shop %}
+        
+        {% endfor %}
+        <div>
+          <label for="product-name">Product Name:</label>
+          <input type="text" id="product-name" name="product_name" required>
+          
+        </div>
+        <div>
+          <label for="product-price">Product Price:</label>
+          <input type="text" id="product-price" name="product_price" required>
+          
+        </div>
+        <div>
+          <label for="product-availability">Product Availability:</label>
+          <select id="product-availability" name="product_availability" required>
+            <option value="in-stock">In Stock</option>
+            <option value="out-of-stock">Out of Stock</option>
+          </select>
+        </div>
+        <div>
+          <label for="product-image">Product Image:</label>
+          <input type="file" id="product-image" name="product_image" required>
+        </div>
+      </div>
+      
+      <input type="submit" value="Submit" >
+
+    </form>
+    <br>
+    <h1>Your added products</h1>
+    <br>
+    <form action="{% url 'update' %}" method="POST">
+      {% csrf_token %}
+
+      <input type="hidden" name="username" id="" value="{{ username.username }}" readonly>
+      
+  
+          <input type="hidden" id="city" name="city" value="{{ username.city }}" readonly>
+          <input type="hidden" id="local_address" name="local_address" value="{{ username.local_address }}" readonly>
+
+
+        <input type="hidden" id="shop-name" name="shop_name" value="{{ username.shop_name }}" readonly>
+   
+    <input type="submit" value="update product info" >
+    </form>
+    <br>
+    <ul>
+      {% for p in product %}
+      <div class="project">
+          <img src="/media/{{p.product_image}}" height="150px" width="150px">
+          <div>
+              
+              <h2>{{p.product_name}}</h2>
+              <p>{{p.shop_name}}</p>
+              <span>{{p.product_price}}</span>
+              <p>{{p.product_availability}}</p>
+          </div>
+      </div>
+      {% endfor %}
+  </ul>
+  </body>
+</html>
